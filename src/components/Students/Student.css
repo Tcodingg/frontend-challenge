@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.students-container {
+  border: 1px solid white;
+  width: 100%;
+}
+
+.students-wrapper {
+  border-bottom: 1px solid var(--color-secondary);
+  padding: 1rem 0.2rem;
+}
+.student-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.student-data {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.img-container img {
+  height: 70px;
+  width: 70px;
+  margin: 0 auto;
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.student-data-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.2rem;
+}
+.student-data-container {
+  padding-left: 1.2rem;
+}
+.student-info {
+  padding-left: 1.2rem;
+}
+.student-info p {
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+.student-details {
+  display: flex;
+  gap: 5px;
+}
+.tag-input-grades {
+  padding-left: 1.2rem;
+}
+button {
+  height: 40px;
+  width: 40px;
+  font-size: 40px;
+  color: var(--color-primary);
+  outline: none;
+  border: none;
+  background-color: white;
+  display: block;
+  cursor: pointer;
+}
+button:hover {
+  color: black;
+}
+/* ----------------tags starts------------------- */
+.enter-tag {
+  border: none;
+  margin-top: 5px;
+  border-bottom: 2px solid var(--color-secondary);
+  padding: 5px;
+  outline: none;
+  color: var(--color-primary);
+  transition: all 0.35s ease-out;
+}
+.enter-tag:focus {
+  border-bottom: 2px solid black;
+}
+
+.display-tags {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.display-tags p {
+  background: var(--color-secondary);
+  color: black;
+  padding: 3px 5px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+/* ----------------tags ends------------------- */
