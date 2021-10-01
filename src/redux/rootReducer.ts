@@ -1,5 +1,5 @@
-import { studentReducer } from "./fetchData/studentReducer";
-import { tagReducer, expandBtnReducer } from "./callToAction/reducers";
+import { studentReducer } from "./reducers/studentReducer";
+import { tagReducer, expandBtnReducer } from "./reducers/callToActionReducers";
 import { combineReducers } from "redux";
 
 export const rootReducer = combineReducers({

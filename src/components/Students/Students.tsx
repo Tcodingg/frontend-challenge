@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Student.css";
 
-import { fetchStudentData } from "../../redux/fetchData/action";
+import { fetchStudentData } from "../../redux/actions/fetchActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import Grades from "../Grades/Grades";
@@ -87,6 +87,7 @@ const Students: React.FC = () => {
                   company,
                   skill,
                   grades,
+                  tag,
                 }) => {
                   return (
                     <div key={id} className="students-wrapper">
@@ -130,12 +131,13 @@ const Students: React.FC = () => {
                               <div className="tag-input-grades">
                                 <Grades grades={grades} id={id} />
                                 <div className="display-tags">
-                                  {tag &&
+                                  {/* {tag &&
                                     tag.map((tags, i) => {
                                       if (tags.id === id) {
                                         return <p key={i}>{tags.newTag}</p>;
                                       }
-                                    })}
+                                    })} */}
+                                  {/* {tag && <p>{tag}</p>} */}
                                 </div>
                                 <TagsInput id={id} />
                               </div>

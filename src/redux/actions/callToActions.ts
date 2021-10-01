@@ -2,10 +2,13 @@ import { actionTypes, tagType } from "./actionTypes";
 
 import { Dispatch } from "redux";
 
-export const addTag = (newTag: tagType) => (dispatch: Dispatch) => {
+export const addTag = (tags: tagType) => (dispatch: Dispatch) => {
   dispatch({
     type: actionTypes.ADD_TAG,
-    payload: newTag,
+    payload: {
+      id: tags.id,
+      newTag: tags.newTag,
+    },
   });
 };
 
@@ -19,3 +22,10 @@ export const expandBtn =
       },
     });
   };
+
+export const searchByName = (name: string) => (dispatch: Dispatch) => {
+  dispatch({
+    type: actionTypes.SEARCH_BY_NAME,
+    payload: name,
+  });
+};

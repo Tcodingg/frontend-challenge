@@ -3,6 +3,8 @@ export enum actionTypes {
   FETCH_SUCCESS = "FETCH_SUCCESS",
   FETCH_FAIL = "FETCH_FAIL",
   ADD_TAG = "ADD_TAG",
+  EXPAND_BTN = "EXPAND_BTN",
+  SEARCH_BY_NAME = "SEARCH_BY_NAME",
 }
 
 type actionLoading = {
@@ -32,6 +34,31 @@ export interface studentTypes {
   pic: string;
   skill: string;
   average: string;
+  tag: string[];
 }
 
-export type Actions = actionLoading | actionSuccess | actionFail;
+export type actionSearchByName = {
+  type: actionTypes.SEARCH_BY_NAME;
+  payload: string;
+};
+
+export type actionExpandBtn = {
+  type: actionTypes.EXPAND_BTN;
+  payload: {
+    expand: boolean;
+    btn_id: string;
+  };
+};
+
+export interface tagType {
+  newTag: string;
+  id?: string;
+}
+
+export type Actions =
+  | actionLoading
+  | actionSuccess
+  | actionFail
+  | actionAddTag
+  | actionSearchByName
+  | actionExpandBtn;

@@ -1,4 +1,4 @@
-import { Actions, actionTypes, tagType } from "./actionTypes";
+import { Actions, actionTypes, tagType } from "../actions/actionTypes";
 import React, { useState } from "react";
 //=================== tag reducer starts ========================
 interface tagInterfaceState {

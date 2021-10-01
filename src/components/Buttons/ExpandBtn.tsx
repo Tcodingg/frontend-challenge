@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { expandBtn } from "../../redux/callToAction/actions";
+import { expandBtn } from "../../redux/actions/callToActions";
 
 interface props {
   id: string;

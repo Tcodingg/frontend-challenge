@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { useDispatch } from "react-redux";
-import { addTag } from "../../redux/callToAction/actions";
+import { addTag } from "../../redux/actions/callToActions";
 
 interface props {
   id: string;
