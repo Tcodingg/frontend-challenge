@@ -11,16 +11,18 @@ const Grades: React.FC<props> = ({ grades, id }) => {
   // const [isExpanded, setIsExpenaded] = useState(true);
 
   // keep track of clicked buttons  or check button if its been checked
-  const { btn_id, expand } = useSelector(
-    (state: RootState) => state.expandBtnReducer
-  );
+  // const { expand } = useSelector(
+  //   (state: RootState) => state.expandBtnReducer
+  // );
 
   return (
     <div
       className="grades"
-      style={{
-        display: expand && btn_id === id ? "block" : "none",
-      }}
+      style={
+        {
+          // display: expand && btn_id === id ? "block" : "none",
+        }
+      }
     >
       {grades &&
         grades.map((grade, i) => {

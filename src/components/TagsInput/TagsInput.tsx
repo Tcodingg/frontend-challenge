@@ -8,7 +8,7 @@ interface props {
   id: string;
 }
 type tagsType = {
-  id?: string;
+  id: string;
   newTag: string;
 };
 const TagsInput: React.FC<props> = ({ id }) => {
@@ -18,10 +18,10 @@ const TagsInput: React.FC<props> = ({ id }) => {
     id: "",
   });
   const handleTag = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
+    const { id: tdId, value } = e.target;
     setTags({
       newTag: value,
-      id,
+      id: tdId,
     });
   };
 
@@ -32,6 +32,7 @@ const TagsInput: React.FC<props> = ({ id }) => {
       // setTags([...tags, newTag]);
       setTags({
         newTag: "",
+        id: "",
       });
     }
   };

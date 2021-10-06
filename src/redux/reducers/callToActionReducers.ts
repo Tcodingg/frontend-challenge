@@ -1,6 +1,10 @@
-import { Actions, actionTypes, tagType } from "../actions/actionTypes";
+import { Actions, actionTypes } from "../actions/actionTypes";
 import React, { useState } from "react";
 //=================== tag reducer starts ========================
+type tagType = {
+  id: string;
+  tags: string[];
+};
 interface tagInterfaceState {
   tag: tagType[];
 }
@@ -13,8 +17,24 @@ export const tagReducer = (
 ): tagInterfaceState => {
   switch (action.type) {
     case actionTypes.ADD_TAG:
+      let hasTag = state.tag.find((tagId) => tagId.id === action.payload.id);
       return {
-        tag: [...state.tag, action.payload],
+        // tag: hasTag?
+        // state.tag.map((storedTag)=> storedTag.id === action.payload.id):
+        ...state,
+        tag: hasTag
+          ? state.tag.map((storedTag) =>
+              storedTag.id === action.payload.id
+                ? {
+                    ...storedTag,
+                    tags: [...storedTag.tags, action.payload.newTag],
+                  }
+                : storedTag
+            )
+          : [
+              ...state.tag,
+              { id: action.payload.id, tags: [action.payload.newTag] },
+            ],
       };
 
     default:
@@ -25,25 +45,20 @@ export const tagReducer = (
 //=================== tag reducer ends ========================
 
 //=================== expandBtn reducer starts =================
-interface expandBtnInterfaceState {
-  expand: boolean;
-  btn_id: string;
-}
+// interface expandBtnInterfaceState {
+//   payload: boolean;
 
-const expandBtnInitialsState = {
-  expand: true,
-  btn_id: "",
-};
+// }
+
+let expandBtnInitialsState: boolean = false;
+
 export const expandBtnReducer = (
-  state: expandBtnInterfaceState = expandBtnInitialsState,
+  state = expandBtnInitialsState,
   action: Actions
 ) => {
   switch (action.type) {
     case actionTypes.EXPAND_BTN:
-      return {
-        btn_id: action.payload.btn_id,
-        expand: action.payload.expand,
-      };
+      return !state;
     default:
       return state;
   }

@@ -34,8 +34,12 @@ export interface studentTypes {
   pic: string;
   skill: string;
   average: string;
-  tag: string[];
+  // tag: reducerTagType;
 }
+type reducerTagType = {
+  id: string;
+  tags: string[];
+};
 
 export type actionSearchByName = {
   type: actionTypes.SEARCH_BY_NAME;
@@ -44,15 +48,12 @@ export type actionSearchByName = {
 
 export type actionExpandBtn = {
   type: actionTypes.EXPAND_BTN;
-  payload: {
-    expand: boolean;
-    btn_id: string;
-  };
+  payload: Boolean;
 };
 
 export interface tagType {
   newTag: string;
-  id?: string;
+  id: string;
 }
 
 export type Actions =
