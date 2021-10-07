@@ -1,12 +1,8 @@
-.container {
-  border: 1px solid black;
-  width: 60vw;
-  height: 73vh;
-  overflow: scroll;
-  margin: auto;
-  border-radius: 10px;
-}
-
-body {
-  background-color: white;
+.app {
+  background-color: rgba(0, 0, 0, 0.151);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
