@@ -4,6 +4,29 @@
   box-sizing: border-box;
 }
 
+/* ===== Students ======= */
+.students {
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  box-shadow: 0px 6px 6px -4px rgb(0 0 0 / 0.3);
+  width: 750px;
+  height: 685px;
+  overflow: scroll;
+  /* margin: auto; */
+  border-radius: 10px;
+  background-color: white;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.students::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.students {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .students-container {
   border: 1px solid white;
   width: 100%;

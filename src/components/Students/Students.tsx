@@ -9,6 +9,7 @@ import AddTags from "../AddTags/AddTags";
 import ExpandBtn from "../Buttons/ExpandBtn";
 import StudentsDescription from "../Students Description/StudentsDescription";
 import DisplayTags from "../DisplayTags/DisplayTags";
+import Search from "../Search/Search";
 
 interface filter {
   id: string;
@@ -75,8 +76,12 @@ const Students: React.FC = () => {
         setFilteredData(() =>
           data.filter(
             (student) =>
-              student.firstName.toLowerCase().includes(input.toLowerCase()) ||
-              student.lastName.toLowerCase().includes(input.toLowerCase())
+              student.firstName
+                .toLowerCase()
+                .includes(input.trim().toLowerCase()) ||
+              student.lastName
+                .toLowerCase()
+                .includes(input.trim().toLowerCase())
           )
         );
       }
@@ -85,7 +90,7 @@ const Students: React.FC = () => {
   }, [input]);
 
   //==================== filter data ends =======================
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const searchByName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
@@ -96,21 +101,16 @@ const Students: React.FC = () => {
   return (
     <div className="students">
       <div className="students-container">
-        <div className="search">
-          <input
-            onChange={handleChange}
-            type="text"
-            placeholder="Search by name"
-          />
-        </div>
-
-        <div className="search">
-          <input
-            onChange={searchByTag}
-            type="text"
-            placeholder="Search by tag"
-          />
-        </div>
+        <Search
+          handleChange={searchByName}
+          value={input}
+          placeholder="Search by name"
+        />
+        <Search
+          handleChange={searchByTag}
+          value={searchTag}
+          placeholder="Search by tag"
+        />
 
         <div>
           {filteredData.map(
