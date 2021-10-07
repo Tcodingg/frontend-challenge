@@ -49,16 +49,25 @@ export const tagReducer = (
 //   payload: boolean;
 
 // }
-
-let expandBtnInitialsState: boolean = false;
+interface expandBtnInterface {
+  isExpand: boolean;
+  id: string;
+}
+let expandBtnInitState: expandBtnInterface = {
+  isExpand: false,
+  id: "",
+};
 
 export const expandBtnReducer = (
-  state = expandBtnInitialsState,
+  state = expandBtnInitState,
   action: Actions
 ) => {
   switch (action.type) {
     case actionTypes.EXPAND_BTN:
-      return !state;
+      return {
+        isExpand: action.payload.isExpand,
+        id: action.payload.id,
+      };
     default:
       return state;
   }

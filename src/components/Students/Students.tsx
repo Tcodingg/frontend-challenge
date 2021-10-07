@@ -5,9 +5,10 @@ import { fetchStudentData } from "../../redux/actions/fetchActions";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import Grades from "../Grades/Grades";
-import TagsInput from "../TagsInput/TagsInput";
+import AddTags from "../AddTags/AddTags";
 import ExpandBtn from "../Buttons/ExpandBtn";
-import { BiCoinStack } from "react-icons/bi";
+import StudentsDescription from "../Students Description/StudentsDescription";
+import DisplayTags from "../DisplayTags/DisplayTags";
 
 interface filter {
   id: string;
@@ -23,13 +24,6 @@ interface filter {
   average: string;
 }
 const Students: React.FC = () => {
-  // button expand =========================
-  const [isExpanded, setIsExpanded] = useState(false);
-  const handleBtn = (id: string) => {
-    setIsExpanded((preVal) => !preVal);
-    console.log(id);
-  };
-
   // Fetching data from the api
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,10 +36,8 @@ const Students: React.FC = () => {
     studentReducer: { students },
     tagReducer: { tag: allTags },
   } = useSelector((state: RootState) => state);
-  // input value
 
   // combine students and their tags
-
   let data = students.map((t1) => ({
     ...t1,
     ...allTags.find((t2) => t2.id === t1.id),
@@ -59,7 +51,6 @@ const Students: React.FC = () => {
   }, [students, allTags]);
 
   // search by tags
-  const [tagsOnly, setTagsOnly] = useState([]);
   useEffect(() => {
     function filterByTag() {
       if (searchTag === "") {
@@ -76,25 +67,24 @@ const Students: React.FC = () => {
   }, [searchTag]);
 
   // filter by first and last name
-
   useEffect(() => {
     function filterByName() {
-      filteredData.filter(({ firstName, lastName }) => {
-        if (input === "") {
-          return { firstName, lastName };
-        } else if (
-          firstName.toLocaleLowerCase().includes(input.toLocaleLowerCase()) ||
-          lastName.toLocaleLowerCase().includes(input.toLocaleLowerCase())
-        ) {
-          return { firstName, lastName };
-        }
-      });
+      if (input === "") {
+        setFilteredData(data);
+      } else if (input.length > 0) {
+        setFilteredData(() =>
+          data.filter(
+            (student) =>
+              student.firstName.toLowerCase().includes(input.toLowerCase()) ||
+              student.lastName.toLowerCase().includes(input.toLowerCase())
+          )
+        );
+      }
     }
     filterByName();
   }, [input]);
 
   //==================== filter data ends =======================
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
@@ -144,47 +134,18 @@ const Students: React.FC = () => {
                           <img src={pic} alt="loading..." />
                         </div>
                         <div className="student-data-wrapper">
-                          <div className="student-description">
-                            <h1>
-                              {`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}
-                            </h1>
-                            <div className="student-info">
-                              <div className="student-details">
-                                <p>Email: </p>
-                                <p>{email}</p>
-                              </div>
-                              <div className="student-details">
-                                <p>Company: </p>
-                                <p>{company}</p>
-                              </div>
-                              <div className="student-details">
-                                <p>Skill: </p>
-                                <p>{skill}</p>
-                              </div>
-                              <div className="student-details">
-                                <p>Average: </p>
-                                <p>
-                                  {`${
-                                    grades
-                                      .map((i) => Number(i))
-                                      .reduce((a, b) => a + b, 0) /
-                                    grades.length
-                                  }%`}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
+                          <StudentsDescription
+                            firstName={firstName}
+                            lastName={lastName}
+                            email={email}
+                            company={company}
+                            grades={grades}
+                            skill={skill}
+                          />
                           <div className="tag-input-grades">
                             <Grades grades={grades} id={id} />
-                            <div className="display-tags">
-                              {tags &&
-                                tags.map((tags, i) => {
-                                  if (id) {
-                                    return <p key={i}>{tags}</p>;
-                                  }
-                                })}
-                            </div>
-                            <TagsInput id={id} />
+                            <DisplayTags tags={tags} id={id} />
+                            <AddTags id={id} />
                           </div>
                         </div>
                       </div>

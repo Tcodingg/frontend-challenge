@@ -1,0 +1,13 @@
+.display-tags {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.display-tags p {
+  background: var(--color-secondary);
+  color: black;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 3px;
+}

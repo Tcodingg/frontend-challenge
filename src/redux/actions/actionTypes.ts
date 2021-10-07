@@ -48,7 +48,10 @@ export type actionSearchByName = {
 
 export type actionExpandBtn = {
   type: actionTypes.EXPAND_BTN;
-  payload: Boolean;
+  payload: {
+    isExpand: boolean;
+    id: string;
+  };
 };
 
 export interface tagType {

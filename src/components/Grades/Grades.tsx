@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 
@@ -8,28 +8,35 @@ interface props {
   displayGrades?: string;
 }
 const Grades: React.FC<props> = ({ grades, id }) => {
-  // const [isExpanded, setIsExpenaded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // keep track of clicked buttons  or check button if its been checked
-  // const { expand } = useSelector(
-  //   (state: RootState) => state.expandBtnReducer
-  // );
+  const { isExpand, id: btnId } = useSelector(
+    (state: RootState) => state.expandBtnReducer
+  );
 
-  return (
-    <div
-      className="grades"
-      style={
-        {
-          // display: expand && btn_id === id ? "block" : "none",
-        }
+  useEffect(() => {
+    function expandBtn() {
+      if (id === btnId) {
+        setIsExpanded((preVal) => !preVal);
       }
-    >
+    }
+    expandBtn();
+  }, [btnId, id, isExpand]);
+  return (
+    <div className="grades">
       {grades &&
         grades.map((grade, i) => {
           return (
-            <div key={i} style={{ display: "flex", gap: "10px" }} id={id}>
+            <div
+              key={i}
+              style={{
+                display: isExpanded ? "flex" : "none",
+              }}
+              id={id}
+            >
               <p>Test {i + 1}:</p>
-              <p>{grade}</p>
+              <p style={{ marginLeft: "5px" }}>{grade}</p>
             </div>
           );
         })}

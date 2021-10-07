@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/rootReducer";
+import React, { useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { addTag } from "../../redux/actions/callToActions";
+import "./AddTags.css";
 
 interface props {
   id: string;
@@ -11,17 +11,17 @@ type tagsType = {
   id: string;
   newTag: string;
 };
-const TagsInput: React.FC<props> = ({ id }) => {
+const AddTags: React.FC<props> = ({ id }) => {
   const dispatch = useDispatch();
   const [tags, setTags] = useState<tagsType>({
     newTag: "",
     id: "",
   });
   const handleTag = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id: tdId, value } = e.target;
+    const { id, value } = e.target;
     setTags({
       newTag: value,
-      id: tdId,
+      id,
     });
   };
 
@@ -36,10 +36,6 @@ const TagsInput: React.FC<props> = ({ id }) => {
       });
     }
   };
-
-  // const { tagReducer } = useSelector((state: RootState) => state);
-
-  // console.log(tagReducer, "this is tags log");
 
   return (
     <div className="tags-input-container">
@@ -56,4 +52,4 @@ const TagsInput: React.FC<props> = ({ id }) => {
   );
 };
 
-export default TagsInput;
+export default AddTags;

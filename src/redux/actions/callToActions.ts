@@ -12,24 +12,16 @@ export const addTag = (tags: tagType) => (dispatch: Dispatch) => {
   });
 };
 
-// export const expandBtn =
-//   (id: string, expand: boolean) => (dispatch: Dispatch) => {
-//     dispatch({
-//       type: actionTypes.EXPAND_BTN,
-//       payload: {
-//         btn_id: id,
-//         expand,
-//       },
-//     });
-//   };
-export const expandBtn = (expand: boolean) => (dispatch: Dispatch) => {
-  dispatch({
-    type: actionTypes.EXPAND_BTN,
-    payload: {
-      expand,
-    },
-  });
-};
+export const expandBtn =
+  (id: string, isExpand: boolean) => (dispatch: Dispatch) => {
+    dispatch({
+      type: actionTypes.EXPAND_BTN,
+      payload: {
+        id,
+        isExpand,
+      },
+    });
+  };
 
 export const searchByName = (name: string) => (dispatch: Dispatch) => {
   dispatch({

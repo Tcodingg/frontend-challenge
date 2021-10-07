@@ -1,0 +1,12 @@
+.enter-tag {
+  border: none;
+  margin-top: 5px;
+  border-bottom: 2px solid var(--color-secondary);
+  padding: 5px;
+  outline: none;
+  color: var(--color-primary);
+  transition: all 0.35s ease-out;
+}
+.enter-tag:focus {
+  border-bottom: 2px solid black;
+}
