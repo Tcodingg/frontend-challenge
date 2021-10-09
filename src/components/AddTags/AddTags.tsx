@@ -28,8 +28,6 @@ const AddTags: React.FC<props> = ({ id }) => {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
       dispatch(addTag(tags));
-
-      // setTags([...tags, newTag]);
       setTags({
         newTag: "",
         id: "",

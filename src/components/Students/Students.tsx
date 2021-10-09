@@ -38,7 +38,7 @@ const Students: React.FC = () => {
     tagReducer: { tag: allTags },
   } = useSelector((state: RootState) => state);
 
-  // combine students and their tags
+  // combine student and tag reducers
   let data = students.map((t1) => ({
     ...t1,
     ...allTags.find((t2) => t2.id === t1.id),
@@ -47,7 +47,6 @@ const Students: React.FC = () => {
   const [filteredData, setFilteredData] = useState<filter[]>([]);
 
   useEffect(() => {
-    //combine merge tags with students.
     setFilteredData(data);
   }, [students, allTags]);
 
@@ -67,7 +66,7 @@ const Students: React.FC = () => {
     filterByTag();
   }, [searchTag]);
 
-  // filter by first and last name
+  //search by first and last name
   useEffect(() => {
     function filterByName() {
       if (input === "") {
@@ -89,7 +88,6 @@ const Students: React.FC = () => {
     filterByName();
   }, [input]);
 
-  //==================== filter data ends =======================
   const searchByName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };

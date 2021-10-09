@@ -11,9 +11,6 @@ export const Search: React.FC<searchInterface> = ({
   value,
   placeholder,
 }) => {
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-  // };
   return (
     <div className="search">
       <input
