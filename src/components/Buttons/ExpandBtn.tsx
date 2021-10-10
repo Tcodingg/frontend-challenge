@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { expandBtn } from "../../redux/actions/callToActions";
+import "./Button.css";
+import { RootState } from "../../redux/rootReducer";
 
 interface props {
   id: string;
@@ -10,10 +12,21 @@ interface props {
 const ExpandBtn: React.FC<props> = ({ id }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // const expand = useSelector((state: RootState) => state.expandBtnReducer);
+  const { isExpand, id: btnId } = useSelector(
+    (state: RootState) => state.expandBtnReducer
+  );
+
+  useEffect(() => {
+    function expandBtn() {
+      if (id === btnId) {
+        setIsExpanded((preVal) => !preVal);
+      }
+    }
+    expandBtn();
+  }, [btnId, id, isExpand]);
+
   const dispatch = useDispatch();
   const handleBtn = (id: string) => {
-    setIsExpanded(!isExpanded);
     dispatch(expandBtn(id, isExpanded));
   };
 

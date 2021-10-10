@@ -10,7 +10,6 @@ interface props {
 const Grades: React.FC<props> = ({ grades, id }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // keep track of clicked buttons  or check button if its been checked
   const { isExpand, id: btnId } = useSelector(
     (state: RootState) => state.expandBtnReducer
   );

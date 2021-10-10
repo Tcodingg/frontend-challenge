@@ -78,17 +78,3 @@
 .tag-input-grades {
   padding-left: 1.2rem;
 }
-button {
-  height: 40px;
-  width: 40px;
-  font-size: 40px;
-  color: var(--color-primary);
-  outline: none;
-  border: none;
-  background-color: white;
-  display: block;
-  cursor: pointer;
-}
-button:hover {
-  color: black;
-}

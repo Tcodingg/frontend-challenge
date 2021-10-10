@@ -25,10 +25,14 @@ interface filter {
   average: string;
 }
 const Students: React.FC = () => {
-  // Fetching data from the api
+  // Dispatch fetch data from an api
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchStudentData());
+    try {
+      dispatch(fetchStudentData());
+    } catch (err) {
+      console.log(err);
+    }
   }, [dispatch]);
 
   const [input, setInput] = useState("");

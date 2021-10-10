@@ -18,6 +18,7 @@ export const Search: React.FC<searchInterface> = ({
         type="text"
         placeholder={placeholder}
         value={value}
+        data-testid="search"
       />
     </div>
   );
